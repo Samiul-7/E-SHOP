@@ -43,9 +43,13 @@ html{
    overflow-x: hidden;
 }
 
-body{
-   background-color: var(--light-bg);
-   /* padding-bottom: 7rem; */
+body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;  /* Full height */
+   background-color: #f4f4f4; /* Optional background color */
+   margin: 0;
 }
 
 section{
@@ -67,6 +71,16 @@ section{
    padding:1.2rem 3rem;
    text-transform: capitalize;
    text-align: center;
+}
+
+.container {
+   width: 80%;
+   max-width: 1000px;  /* Adjust width as needed */
+   background: white;
+   padding: 150px;
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+   border-radius: 10px;
+   text-align: center; /* Center text inside container */
 }
 
 .btn{
