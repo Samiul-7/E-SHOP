@@ -9,7 +9,14 @@
          <a href="admin_accounts.php" class="nav-link">Admins</a>
          <a href="users_accounts.php" class="nav-link">Users</a>
          <a href="messages.php" class="nav-link">Messages</a>
-         
+         <div class="profile">
+         <?php
+            $select_profile = $conn->prepare("SELECT * FROM admin WHERE id = ?");
+            $select_profile->execute([$admin_id]);
+            $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+            ?>
+            <p><?= $fetch_profile['name']; ?></p>
+         </div>
          <a href="update_profile.php" class="nav-link">Update Profile</a>
          <a href="register_admin.php" class="nav-link">register</a>
          <a href="../components/admin_logout.php" onclick="return confirm('logout from this website?');" class="nav-link">
