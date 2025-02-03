@@ -436,44 +436,6 @@ section{
    color:var(--black);
 }
 
-.placed-orders .box-container{
-   display: grid;
-   grid-template-columns: repeat(auto-fit, 33rem);
-   gap:1.5rem;
-   justify-content: center;
-   align-items: flex-start;
-}
-
-.placed-orders .box-container .box{
-   background-color: var(--white);
-   border-radius: .5rem;
-   box-shadow: var(--box-shadow);
-   border:var(--border);
-   padding:2rem;
-   padding-top: 1rem;
-}
-
-.placed-orders .box-container .box p{
-   padding: .5rem 0;
-   line-height: 1.5;
-   font-size: 1.8rem;
-   color:var(--black);
-}
-
-.placed-orders .box-container .box p span{
-   color:var(--main-color);
-}
-
-.placed-orders .box-container .box .drop-down{
-   width: 100%;
-   margin:1rem 0;
-   background-color: var(--light-bg);
-   padding:1rem 1.4rem;
-   font-size: 2rem;
-   color:var(--black);
-   border:var(--border);
-   border-radius: .5rem;
-}
 
 .accounts .box-container{
    display: grid;
@@ -502,45 +464,6 @@ section{
 .accounts .box-container .box p span{
    color:var(--main-color);
 }
-
-.messages .box-container{
-   display: grid;
-   grid-template-columns: repeat(auto-fit, 33rem);
-   gap:1.5rem;
-   justify-content: center;
-   align-items: flex-start;
-}
-
-.messages .box-container .box{
-   background-color: var(--white);
-   border-radius: .5rem;
-   box-shadow: var(--box-shadow);
-   border:var(--border);
-   padding:2rem;
-   padding-top: 1rem;
-}
-
-.messages .box-container .box p{
-   padding: .5rem 0;
-   font-size: 1.8rem;
-   color:var(--black);
-}
-
-.messages .box-container .box p span{
-   color:var(--main-color);
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -603,9 +526,7 @@ section{
       grid-template-columns: 1fr;
    }
 
-   .placed-orders .box-container{
-      grid-template-columns: 1fr;
-   }
+   
 
    .accounts .box-container{
       grid-template-columns: 1fr;
