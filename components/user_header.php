@@ -15,8 +15,8 @@
       <div class="icons">
       
          <a href="search.php"><i class="fas fa-search"></i></a>
-        
          <div id="user-btn" class="fas fa-user"></div>
+         <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
          <div id="menu-btn" class="fas fa-bars"></div>
       </div>
 
