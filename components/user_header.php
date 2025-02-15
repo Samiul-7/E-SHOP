@@ -7,7 +7,7 @@
 
       <nav class="navbar">
          <a href="home.php">home</a>
-         <a href="catagory.php">All products</a>
+         <a href="menu.php">All products</a>
          <a href="orders.php">orders</a>
          <a href="contact.php">contact</a>
       </nav>
