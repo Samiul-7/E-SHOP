@@ -47,7 +47,7 @@ if(isset($_SESSION['user_id'])){
       <a href="category.php?category=Mens" class="box">
          <h3>Man</h3>
       </a>
-      <a href="category.php?category=Women" class="box">
+      <a href="category.php?category=Womens" class="box">
          <h3>Woman</h3>
       </a>
       <a href="category.php?category=Kids" class="box">

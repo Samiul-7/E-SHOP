@@ -8,7 +8,7 @@ if(isset($_SESSION['user_id'])){
 }else{
    $user_id = '';
 };
-//include 'components/add_cart.php';
+include 'components/add_cart.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
