@@ -1,3 +1,10 @@
+<?php
+   $cart_count_query = $conn->prepare("
+      SELECT COUNT(*) AS cart_count FROM `cart` WHERE user_id = (SELECT id FROM `users` WHERE id = ?)
+   ");
+   $cart_count_query->execute([$user_id]);
+   $cart_count = $cart_count_query->fetch(PDO::FETCH_ASSOC)['cart_count'];
+?>
 
 <header class="header">
 
@@ -13,10 +20,17 @@
       </nav>
 
       <div class="icons">
-      
          <a href="search.php"><i class="fas fa-search"></i></a>
          <div id="user-btn" class="fas fa-user"></div>
-         <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+
+         <!-- Display the cart count beside the cart icon -->
+         <a href="cart.php" style="position: relative;">
+            <i class="fas fa-shopping-cart"></i>
+            <?php if ($cart_count > 0): ?>
+               <span class="cart-count"><?= $cart_count; ?></span>
+            <?php endif; ?>
+         </a>
+
          <div id="menu-btn" class="fas fa-bars"></div>
       </div>
 
@@ -48,3 +62,16 @@
    </section>
 
 </header>
+
+<style>
+   .cart-count {
+      background-color: red;
+      color: white;
+      font-size: 5px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      position: absolute;
+      top: -5px;
+      right: -10px;
+   }
+</style>
