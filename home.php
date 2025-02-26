@@ -55,10 +55,7 @@ if(isset($_SESSION['user_id'])){
       </a>
    </div>
 </section>
-<section>
-   <p>Choose your category <br> Grab your favs <br> Check for the best deal<br> happy Shopping!<br></p>
-   <p>Please Message us! <br> We are eager to listen to you</p>
-</section>
+
 <?php include 'components/footer.php'; ?>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <!-- custom js file link  -->
