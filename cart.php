@@ -78,11 +78,11 @@ $grand_total = 0;
          <div class="name"><?= $fetch_cart['name']; ?></div>
          <p>Added by: <strong><?= $fetch_cart['user_name']; ?></strong> (<?= $fetch_cart['user_email']; ?>)</p>
          <div class="flex">
-            <div class="price"><span>$</span><?= $fetch_cart['price']; ?></div>
+            <div class="price"><span>Tk</span><?= $fetch_cart['price']; ?></div>
             <input type="number" name="qty" class="qty" min="1" max="99" value="<?= $fetch_cart['quantity']; ?>" maxlength="2">
             <button type="submit" class="fas fa-edit" name="update_qty"></button>
          </div>
-         <div class="sub-total"> Sub Total: <span>$<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</span> </div>
+         <div class="sub-total"> Sub Total: <span>Tk<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</span> </div>
       </form>
       <?php
                $grand_total += $sub_total;
@@ -94,7 +94,7 @@ $grand_total = 0;
    </div>
 
    <div class="cart-total">
-      <p>Cart Total: <span>$<?= $grand_total; ?></span></p>
+      <p>Cart Total: <span>Tk<?= $grand_total; ?></span></p>
       <a href="checkout.php" class="btn <?= ($grand_total > 0)?'':'disabled'; ?>">Proceed to Checkout</a>
    </div>
 

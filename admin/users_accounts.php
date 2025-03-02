@@ -1,15 +1,10 @@
 <?php
-
 include '../components/connect.php';
-
 session_start();
-
 $admin_id = $_SESSION['admin_id'];
-
 if(!isset($admin_id)){
    header('location:admin_login.php');
 }
-
 if(isset($_GET['delete'])){
    $delete_id = $_GET['delete'];
    $delete_users = $conn->prepare("DELETE FROM `users` WHERE id = ?");
@@ -20,9 +15,7 @@ if(isset($_GET['delete'])){
    $delete_cart->execute([$delete_id]);
    header('location:users_accounts.php');
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,32 +23,24 @@ if(isset($_GET['delete'])){
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Users Accounts</title>
-
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
    <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/admin_style.css">
-
 </head>
 <body>
-
 <?php include '../components/admin_header.php' ?>
-
 <!-- user accounts section starts  -->
-
 <section class="accounts">
-
    <h1 class="heading">Users Account</h1>
-
    <div class="box-container">
-
    <?php
       $select_account = $conn->prepare("
          SELECT id, name, 
                 (SELECT number FROM users WHERE users.id = u.id) AS number,
                 (SELECT address FROM users WHERE users.id = u.id) AS address,
-                (SELECT COUNT(*) FROM messages WHERE messages.user_id = u.id) AS message_count
+                (SELECT COUNT(*) FROM messages WHERE messages.user_id = u.id) AS message_count,
+                (SELECT COUNT(*) FROM orders WHERE orders.user_id = u.id) AS order_count
          FROM users AS u
       ");
       $select_account->execute();
@@ -68,7 +53,8 @@ if(isset($_GET['delete'])){
       <p> Username : <span><?= $fetch_accounts['name']; ?></span> </p>
       <p> Number : <span><?= $fetch_accounts['number']; ?></span> </p>
       <p> Address : <span><?= $fetch_accounts['address']; ?></span> </p>
-      <p> Messages Sent : <span><?= $fetch_accounts['message_count']; ?></span> </p> <!-- Displaying message count -->
+      <p> Messages Sent : <span><?= $fetch_accounts['message_count']; ?></span> </p> 
+      <p> Orders Count : <span><?= $fetch_accounts['order_count']; ?></span> </p> 
       <a href="users_accounts.php?delete=<?= $fetch_accounts['id']; ?>" class="delete-btn" onclick="return confirm('Delete this account?');">Delete</a>
    </div>
    <?php
@@ -77,13 +63,9 @@ if(isset($_GET['delete'])){
       echo '<p class="empty">No accounts available</p>';
    }
    ?>
-
    </div>
-
 </section>
-
 <!-- user accounts section ends -->
-
 <!-- custom js file link  -->
 <script src="../js/admin_script.js"></script>
 

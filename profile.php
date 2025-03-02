@@ -10,17 +10,20 @@ if (isset($_SESSION['user_id'])) {
 } else {
     $user_id = '';
     header('location:home.php');
+    exit();
 }
 
 $select_profile = $conn->prepare("
     SELECT u.*, 
-           (SELECT COUNT(*) FROM `messages` WHERE messages.user_id = u.id) AS message_count
+           (SELECT COUNT(*) FROM `messages` WHERE messages.user_id = u.id) AS message_count,
+           (SELECT COUNT(*) FROM `orders` WHERE orders.user_id = u.id) AS order_count
     FROM `users` AS u 
     WHERE u.id = ?");
 $select_profile->execute([$user_id]);
 $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
 
 $message_count_value = $fetch_profile['message_count']; 
+$order_count_value = $fetch_profile['order_count']; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,16 +46,17 @@ $message_count_value = $fetch_profile['message_count'];
 
     <section class="user-details">
         <div class="user">
-            <p><i class="fas fa-user"></i><span><span><?= $fetch_profile['name']; ?></span></span></p>
+            <p><i class="fas fa-user"></i><span><?= $fetch_profile['name']; ?></span></p>
             <p><i class="fas fa-phone"></i><span><?= $fetch_profile['number']; ?></span></p>
             <p><i class="fas fa-envelope"></i><span><?= $fetch_profile['email']; ?></span></p>
             <p><i class="fas fa-comment"></i><span>Messages Sent: <?= $message_count_value; ?></span></p>
+            <p><i class="fas fa-box"></i><span>Orders Placed: <?= $order_count_value; ?></span></p>
             <a href="update_profile.php" class="btn">Update Info</a>
-            <p class="address"><i class="fas fa-map-marker-alt"></i><span><?php if ($fetch_profile['address'] == '') {
-                                                                                echo 'Please enter your address';
-                                                                            } else {
-                                                                                echo $fetch_profile['address'];
-                                                                            } ?></span></p>
+            <p class="address"><i class="fas fa-map-marker-alt"></i>
+                <span>
+                    <?= empty($fetch_profile['address']) ? 'Please enter your address' : $fetch_profile['address']; ?>
+                </span>
+            </p>
             <a href="update_address.php" class="btn">Update Address</a>
         </div>
     </section>
